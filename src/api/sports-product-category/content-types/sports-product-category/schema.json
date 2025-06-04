@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_product_categories",
+  "info": {
+    "singularName": "sports-product-category",
+    "pluralName": "sports-product-categories",
+    "displayName": "SportsProductCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "adminName": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sports-product-category.sports-product-category"
+    }
+  }
+}

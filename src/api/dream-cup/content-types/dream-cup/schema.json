@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dream_cups",
+  "info": {
+    "singularName": "dream-cup",
+    "pluralName": "dream-cups",
+    "displayName": "DreamCup",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "detail": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dream-cup-category.dream-cup-category"
+    }
+  }
+}

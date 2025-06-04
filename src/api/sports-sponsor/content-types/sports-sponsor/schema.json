@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_sponsors",
+  "info": {
+    "singularName": "sports-sponsor",
+    "pluralName": "sports-sponsors",
+    "displayName": "SportsSponsor",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "engName": {
+      "type": "string"
+    },
+    "birthday": {
+      "type": "string"
+    },
+    "heightAndWeight": {
+      "type": "string"
+    },
+    "team": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "listImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "history": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "relatedProduct": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "teamProfile": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "innerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sports-sponsor-category.sports-sponsor-category"
+    }
+  }
+}

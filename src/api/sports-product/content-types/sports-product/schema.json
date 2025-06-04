@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_products",
+  "info": {
+    "singularName": "sports-product",
+    "pluralName": "sports-products",
+    "displayName": "SportsProduct",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "productName": {
+      "type": "string"
+    },
+    "mainImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "detail": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sports-product-category.sports-product-category"
+    },
+    "sportsItem": {
+      "type": "enumeration",
+      "enum": [
+        "FOOTBALL"
+      ]
+    },
+    "model": {
+      "type": "enumeration",
+      "enum": [
+        "MORELIA",
+        "ALPHA",
+        "MONARCIDA"
+      ]
+    },
+    "line": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+  "kind": "collectionType",
+  "collectionName": "golf_products",
+  "info": {
+    "singularName": "golf-product",
+    "pluralName": "golf-products",
+    "displayName": "GolfProduct",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "productName": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::golf-product-category.golf-product-category"
+    },
+    "clubEquipmentClassification": {
+      "type": "enumeration",
+      "enum": [
+        "GOLF CLUB",
+        "GOLF EQUIPMENT"
+      ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "IRON",
+        "DRIVER",
+        "FAIRWAY WOOD",
+        "UTILITY",
+        "WEDGE",
+        "PUTTER",
+        "FULLSET",
+        "GOLFBAG",
+        "SHOES",
+        "GLOVE",
+        "BALL",
+        "CAP",
+        "SPIKE",
+        "ACC"
+      ]
+    },
+    "year": {
+      "type": "string"
+    },
+    "model": {
+      "type": "string"
+    },
+    "mainImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "productCatch": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "simpleExplanation": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "purchaseLink": {
+      "type": "text"
+    },
+    "recommendedConsumerPrice": {
+      "type": "string"
+    },
+    "tvcfId": {
+      "type": "text"
+    },
+    "images": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "detailWithQuickSwitch": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "viewLink3D": {
+      "type": "text"
+    },
+    "specification": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "shaft": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "sizeChart": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "manual": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}

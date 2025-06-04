@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dream_cup_categories",
+  "info": {
+    "singularName": "dream-cup-category",
+    "pluralName": "dream-cup-categories",
+    "displayName": "DreamCupCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "adminName": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::dream-cup-category.dream-cup-category"
+    }
+  }
+}

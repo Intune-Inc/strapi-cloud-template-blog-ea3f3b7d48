@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "golf_sponsor_categories",
+  "info": {
+    "singularName": "golf-sponsor-category",
+    "pluralName": "golf-sponsor-categories",
+    "displayName": "GolfSponsorCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "adminName": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::golf-sponsor-category.golf-sponsor-category"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "golf_product_categories",
+  "info": {
+    "singularName": "golf-product-category",
+    "pluralName": "golf-product-categories",
+    "displayName": "GolfProductCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "adminName": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::golf-product-category.golf-product-category"
+    }
+  }
+}

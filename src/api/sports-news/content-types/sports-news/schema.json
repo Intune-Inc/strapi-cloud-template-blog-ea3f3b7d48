@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sports_newses",
+  "info": {
+    "singularName": "sports-news",
+    "pluralName": "sports-newses",
+    "displayName": "SportsNews"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "subTitle": {
+      "type": "text"
+    },
+    "postedDate": {
+      "type": "date"
+    },
+    "mainImg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "detail": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::sports-news-category.sports-news-category"
+    }
+  }
+}

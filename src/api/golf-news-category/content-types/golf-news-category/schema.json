@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "golf_news_categories",
+  "info": {
+    "singularName": "golf-news-category",
+    "pluralName": "golf-news-categories",
+    "displayName": "GolfNewsCategory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "adminName": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::golf-news-category.golf-news-category"
+    }
+  }
+}
