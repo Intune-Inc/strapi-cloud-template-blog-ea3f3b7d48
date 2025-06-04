@@ -21,11 +21,16 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-file-system": "^1.0.10",
     "styled-components": "^6.0.0"
   },
-  "devDependencies": {},
   "engines": {
     "node": ">=18.0.0 <=22.x.x",
     "npm": ">=6.0.0"
+  },
+  "overrides": {
+    "strapi-plugin-file-system": {
+      "@strapi/strapi": "5.11.0"
+    }
   }
 }

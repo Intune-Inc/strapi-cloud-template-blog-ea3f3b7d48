@@ -1,1 +1,5 @@
-module.exports = () => ({});
+module.exports = ({ env }) => ({
+  'file-system': {
+    enabled: true,
+  }
+})
