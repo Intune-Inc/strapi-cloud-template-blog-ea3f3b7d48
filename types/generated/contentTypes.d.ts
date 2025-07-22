@@ -743,6 +743,42 @@ export interface ApiGolfSponsorCategoryGolfSponsorCategory
   };
 }
 
+export interface ApiGolfSponsorSupportGolfSponsorSupport
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'golf_sponsor_supports';
+  info: {
+    displayName: 'GolfSponsorSupport';
+    pluralName: 'golf-sponsor-supports';
+    singularName: 'golf-sponsor-support';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    detail: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::golf-sponsor-support.golf-sponsor-support'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiGolfSponsorGolfSponsor extends Struct.CollectionTypeSchema {
   collectionName: 'golf_sponsors';
   info: {
@@ -1596,6 +1632,7 @@ declare module '@strapi/strapi' {
       'api::golf-product-category.golf-product-category': ApiGolfProductCategoryGolfProductCategory;
       'api::golf-product.golf-product': ApiGolfProductGolfProduct;
       'api::golf-sponsor-category.golf-sponsor-category': ApiGolfSponsorCategoryGolfSponsorCategory;
+      'api::golf-sponsor-support.golf-sponsor-support': ApiGolfSponsorSupportGolfSponsorSupport;
       'api::golf-sponsor.golf-sponsor': ApiGolfSponsorGolfSponsor;
       'api::sports-news-category.sports-news-category': ApiSportsNewsCategorySportsNewsCategory;
       'api::sports-news.sports-news': ApiSportsNewsSportsNews;

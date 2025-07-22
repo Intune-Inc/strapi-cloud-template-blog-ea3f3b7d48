@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "golf_sponsor_supports",
+  "info": {
+    "singularName": "golf-sponsor-support",
+    "pluralName": "golf-sponsor-supports",
+    "displayName": "GolfSponsorSupport"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
