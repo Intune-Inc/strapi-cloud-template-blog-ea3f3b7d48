@@ -2,87 +2,35 @@
 
 // URL 생성 로직 함수
 const getPreviewPathname = (uid, { locale, document }) => {
-  const { slug, title, name } = document;
+  const { slug, title, name, documentId } = document;
   
   // 컬렉션 타입별 URL 패턴 정의
   switch (uid) {
-    // 페이지 컬렉션
+    // 미즈노 골프 컬렉션들
+    case "api::dream-cup.dream-cup":
+      return `/mizuno/golf/dreamcup/dreamcup.html?documentId=${documentId}`;
+    
+    case "api::golf-news.golf-news":
+      return `/mizuno/golf/news/news_detail.html?documentId=${documentId}`;
+    
     case "api::golf-product.golf-product":
-      return `/product-detail.html?documentId=${slug}`;
+      return `/mizuno/golf/product/prd_detail.html?documentId=${documentId}`;
     
-    // 블로그 아티클
-    case "api::article.article":
-    case "api::blog.blog":
-      if (!slug) return "/blog";
-      return `/blog/${slug}`;
+    case "api::golf-sponsor.golf-sponsor":
+      return `/mizuno/golf/sponsor/sponsor_detail.html?documentId=${documentId}`;
     
-    // 제품 페이지
-    case "api::product.product":
-      if (!slug) return "/products";
-      return `/products/${slug}`;
+    case "api::golf-sponsor-support.golf-sponsor-support":
+      return `/mizuno/golf/sponsor/prosupport.html?documentId=${documentId}`;
     
-    // 뉴스/공지사항
-    case "api::news.news":
-    case "api::notice.notice":
-      if (!slug) return "/news";
-      return `/news/${slug}`;
+    // 미즈노 스포츠 컬렉션들
+    case "api::sports-news.sports-news":
+      return `/mizuno/sports/news/news_detail.html?documentId=${documentId}`;
     
-    // 이벤트
-    case "api::event.event":
-      if (!slug) return "/events";
-      return `/events/${slug}`;
+    case "api::sports-product.sports-product":
+      return `/mizuno/sports/product/prd_detail.html?documentId=${documentId}`;
     
-    // 카테고리
-    case "api::category.category":
-      if (!slug) return "/categories";
-      return `/category/${slug}`;
-    
-    // 포트폴리오
-    case "api::portfolio.portfolio":
-      if (!slug) return "/portfolio";
-      return `/portfolio/${slug}`;
-    
-    // 서비스 페이지
-    case "api::service.service":
-      if (!slug) return "/services";
-      return `/services/${slug}`;
-    
-    // FAQ
-    case "api::faq.faq":
-      return "/faq";
-    
-    // 회사 소개 페이지들
-    case "api::about.about":
-      return "/about";
-    
-    case "api::contact.contact":
-      return "/contact";
-    
-    // 커스텀 랜딩 페이지
-    case "api::landing.landing":
-      if (!slug) return null;
-      return `/landing/${slug}`;
-    
-    // 사전 정의된 특별 페이지들
-    case "api::special-page.special-page":
-      switch (slug) {
-        case "pricing":
-          return "/pricing";
-        case "features":
-          return "/features";
-        case "testimonials":
-          return "/testimonials";
-        case "team":
-          return "/team";
-        default:
-          return slug ? `/${slug}` : null;
-      }
-    
-    // 전역 설정이나 메타데이터 (미리보기 불필요)
-    case "api::global.global":
-    case "api::seo.seo":
-    case "api::config.config":
-      return null;
+    case "api::sports-sponsor.sports-sponsor":
+      return `/mizuno/sports/sponsor/sponsor_detail.html?documentId=${documentId}`;
     
     default:
       // 기본적으로 slug가 있으면 해당 경로로, 없으면 컬렉션명으로
@@ -109,11 +57,12 @@ module.exports = ({ env }) => ({
     nps: env.bool('FLAG_NPS', true),
     promoteEE: env.bool('FLAG_PROMOTE_EE', true),
   },
-  // 미리보기 설정 추가
+  // 미리보기 설정
   preview: {
     enabled: true,
     config: {
-      allowedOrigins: "https://intunedev.cafe24.com/homepage",
+      // 미즈노 B2C 도메인 설정
+      allowedOrigins: env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr",
       
       async handler(uid, { documentId, locale, status }) {
         try {
@@ -136,17 +85,38 @@ module.exports = ({ env }) => ({
             return null;
           }
 
-          // Next.js draft mode URL 생성
-          const urlSearchParams = new URLSearchParams({
-            url: pathname,
-            secret: env("PREVIEW_SECRET"),
-            status: status || 'draft',
-            uid: uid,
-            documentId: documentId,
-            ...(locale && { locale })
-          });
-
-          const previewUrl = `${env("CLIENT_URL")}/api/preview?${urlSearchParams}`;
+          // 미즈노 컬렉션인지 확인
+          const isMizunoCollection = uid.includes('golf-') || uid.includes('sports-') || uid.includes('dream-cup');
+          
+          let previewUrl;
+          
+          if (isMizunoCollection) {
+            // 미즈노 컬렉션의 경우 직접 프론트엔드 페이지로 이동
+            const mizunoBaseUrl = env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr";
+            const urlSearchParams = new URLSearchParams({
+              documentId: documentId,
+              preview: 'true',
+              status: status || 'draft'
+            });
+            
+            previewUrl = mizunoBaseUrl + pathname + (pathname.includes('?') ? '&' : '?') + urlSearchParams.toString();
+          } else {
+            // 기존 Next.js draft mode 방식
+            const baseParams = {
+              url: pathname,
+              status: status || 'draft'
+            };
+            
+            // PREVIEW_SECRET이 있는 경우에만 추가
+            const previewSecret = env("PREVIEW_SECRET");
+            if (previewSecret) {
+              baseParams.secret = previewSecret;
+            }
+            
+            const urlSearchParams = new URLSearchParams(baseParams);
+            const baseUrl = env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr";
+            previewUrl = baseUrl + "/api/preview?" + urlSearchParams.toString();
+          }
           
           console.log(`Preview URL generated for ${uid}/${documentId}:`, previewUrl);
           
