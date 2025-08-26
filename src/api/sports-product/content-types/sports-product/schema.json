@@ -53,6 +53,9 @@
     },
     "line": {
       "type": "string"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

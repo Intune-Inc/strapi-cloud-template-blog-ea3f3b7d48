@@ -642,6 +642,7 @@ export interface ApiGolfProductGolfProduct extends Struct.CollectionTypeSchema {
         }
       >;
     model: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
     productCatch: Schema.Attribute.RichText &
       Schema.Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
@@ -782,6 +783,7 @@ export interface ApiGolfSponsorSupportGolfSponsorSupport
 export interface ApiGolfSponsorGolfSponsor extends Struct.CollectionTypeSchema {
   collectionName: 'golf_sponsors';
   info: {
+    description: '';
     displayName: 'GolfSponsor';
     pluralName: 'golf-sponsors';
     singularName: 'golf-sponsor';
@@ -815,6 +817,7 @@ export interface ApiGolfSponsorGolfSponsor extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
     nationality: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
     playerImg: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
     tour: Schema.Attribute.String;
@@ -979,6 +982,7 @@ export interface ApiSportsProductSportsProduct
       Schema.Attribute.Private;
     mainImg: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     model: Schema.Attribute.Enumeration<['MORELIA', 'ALPHA', 'MONARCIDA']>;
+    order: Schema.Attribute.Integer;
     productName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     sportsItem: Schema.Attribute.Enumeration<['FOOTBALL']>;
@@ -1064,6 +1068,7 @@ export interface ApiSportsSponsorSportsSponsor
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    order: Schema.Attribute.Integer;
     position: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
     relatedProduct: Schema.Attribute.RichText &

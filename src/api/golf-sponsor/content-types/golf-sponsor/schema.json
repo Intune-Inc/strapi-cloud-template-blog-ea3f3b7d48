@@ -4,7 +4,8 @@
   "info": {
     "singularName": "golf-sponsor",
     "pluralName": "golf-sponsors",
-    "displayName": "GolfSponsor"
+    "displayName": "GolfSponsor",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -22,14 +23,15 @@
       "type": "string"
     },
     "playerImg": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "birthday": {
       "type": "string"
@@ -56,6 +58,9 @@
         "preset": "defaultHtml"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }

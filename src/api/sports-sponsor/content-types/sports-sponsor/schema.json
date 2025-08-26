@@ -76,6 +76,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::sports-sponsor-category.sports-sponsor-category"
+    },
+    "order": {
+      "type": "integer"
     }
   }
 }
