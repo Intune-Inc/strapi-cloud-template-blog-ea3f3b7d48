@@ -136,6 +136,9 @@
     },
     "order": {
       "type": "integer"
+    },
+    "badge": {
+      "type": "text"
     }
   }
 }

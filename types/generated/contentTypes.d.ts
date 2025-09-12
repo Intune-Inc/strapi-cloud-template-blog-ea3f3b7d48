@@ -606,6 +606,7 @@ export interface ApiGolfProductGolfProduct extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    badge: Schema.Attribute.Text;
     category: Schema.Attribute.Relation<
       'oneToOne',
       'api::golf-product-category.golf-product-category'
@@ -959,6 +960,7 @@ export interface ApiSportsProductSportsProduct
     draftAndPublish: true;
   };
   attributes: {
+    badge: Schema.Attribute.Text;
     category: Schema.Attribute.Relation<
       'oneToOne',
       'api::sports-product-category.sports-product-category'
