@@ -409,6 +409,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiAgencyVideoAgencyVideo extends Struct.CollectionTypeSchema {
   collectionName: 'agency_videos';
   info: {
+    description: '';
     displayName: 'AgencyVideo';
     pluralName: 'agency-videos';
     singularName: 'agency-video';
@@ -428,6 +429,7 @@ export interface ApiAgencyVideoAgencyVideo extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

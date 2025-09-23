@@ -4,24 +4,29 @@
   "info": {
     "singularName": "agency-video",
     "pluralName": "agency-videos",
-    "displayName": "AgencyVideo"
+    "displayName": "AgencyVideo",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "attributes": {
     "video": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "isActive": {
       "type": "boolean"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }
