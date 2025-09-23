@@ -406,6 +406,35 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAgencyVideoAgencyVideo extends Struct.CollectionTypeSchema {
+  collectionName: 'agency_videos';
+  info: {
+    displayName: 'AgencyVideo';
+    pluralName: 'agency-videos';
+    singularName: 'agency-video';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    isActive: Schema.Attribute.Boolean;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::agency-video.agency-video'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+  };
+}
+
 export interface ApiDreamCupCategoryDreamCupCategory
   extends Struct.CollectionTypeSchema {
   collectionName: 'dream_cup_categories';
@@ -1632,6 +1661,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::agency-video.agency-video': ApiAgencyVideoAgencyVideo;
       'api::dream-cup-category.dream-cup-category': ApiDreamCupCategoryDreamCupCategory;
       'api::dream-cup.dream-cup': ApiDreamCupDreamCup;
       'api::golf-news-category.golf-news-category': ApiGolfNewsCategoryGolfNewsCategory;

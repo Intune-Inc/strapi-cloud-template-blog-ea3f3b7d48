@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "agency_videos",
+  "info": {
+    "singularName": "agency-video",
+    "pluralName": "agency-videos",
+    "displayName": "AgencyVideo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "video": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "isActive": {
+      "type": "boolean"
+    }
+  }
+}
