@@ -614,6 +614,7 @@ export interface ApiGolfProductCategoryGolfProductCategory
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    order: Schema.Attribute.BigInteger;
     parent: Schema.Attribute.Relation<
       'oneToOne',
       'api::golf-product-category.golf-product-category'
@@ -967,6 +968,7 @@ export interface ApiSportsProductCategorySportsProductCategory
     > &
       Schema.Attribute.Private;
     name: Schema.Attribute.String;
+    order: Schema.Attribute.BigInteger;
     parent: Schema.Attribute.Relation<
       'oneToOne',
       'api::sports-product-category.sports-product-category'

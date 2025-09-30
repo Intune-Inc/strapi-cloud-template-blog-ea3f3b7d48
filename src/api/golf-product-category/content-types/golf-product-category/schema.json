@@ -21,6 +21,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::golf-product-category.golf-product-category"
+    },
+    "order": {
+      "type": "biginteger"
     }
   }
 }
