@@ -1016,11 +1016,13 @@ export interface ApiSportsProductSportsProduct
     > &
       Schema.Attribute.Private;
     mainImg: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    model: Schema.Attribute.Enumeration<['MORELIA', 'ALPHA', 'MONARCIDA']>;
+    model: Schema.Attribute.Enumeration<
+      ['MORELIA', 'ALPHA', 'MONARCIDA', 'SPORTSSTYLE']
+    >;
     order: Schema.Attribute.Integer;
     productName: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    sportsItem: Schema.Attribute.Enumeration<['FOOTBALL']>;
+    sportsItem: Schema.Attribute.Enumeration<['FOOTBALL', 'SPORTSSTYLE']>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -40,7 +40,8 @@
     "sportsItem": {
       "type": "enumeration",
       "enum": [
-        "FOOTBALL"
+        "FOOTBALL",
+        "SPORTSSTYLE"
       ]
     },
     "model": {
@@ -48,7 +49,8 @@
       "enum": [
         "MORELIA",
         "ALPHA",
-        "MONARCIDA"
+        "MONARCIDA",
+        "SPORTSSTYLE"
       ]
     },
     "line": {
