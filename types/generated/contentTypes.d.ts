@@ -1129,6 +1129,44 @@ export interface ApiSportsSponsorSportsSponsor
   };
 }
 
+export interface ApiTeamWearTeamWear extends Struct.CollectionTypeSchema {
+  collectionName: 'team_wears';
+  info: {
+    description: '';
+    displayName: 'TeamWear';
+    pluralName: 'team-wears';
+    singularName: 'team-wear';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    categoryName: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    detail: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::team-wear.team-wear'
+    > &
+      Schema.Attribute.Private;
+    order: Schema.Attribute.BigInteger;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiVideoVideo extends Struct.CollectionTypeSchema {
   collectionName: 'videos';
   info: {
@@ -1683,6 +1721,7 @@ declare module '@strapi/strapi' {
       'api::sports-product.sports-product': ApiSportsProductSportsProduct;
       'api::sports-sponsor-category.sports-sponsor-category': ApiSportsSponsorCategorySportsSponsorCategory;
       'api::sports-sponsor.sports-sponsor': ApiSportsSponsorSportsSponsor;
+      'api::team-wear.team-wear': ApiTeamWearTeamWear;
       'api::video.video': ApiVideoVideo;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

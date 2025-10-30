@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "team_wears",
+  "info": {
+    "singularName": "team-wear",
+    "pluralName": "team-wears",
+    "displayName": "TeamWear",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "categoryName": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "customField",
+      "options": {
+        "preset": "defaultHtml"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "order": {
+      "type": "biginteger"
+    }
+  }
+}
