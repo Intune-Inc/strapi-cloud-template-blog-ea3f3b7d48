@@ -4,7 +4,7 @@ module.exports = {
         
         // order가 없으면 자동으로 다음 순서 할당
         if (!data.order) {
-            const maxOrderItem = await strapi.db.query('api::sports-sponsor.sports-sponsor').findMany({
+            const maxOrderItem = await strapi.db.query('api::sports-product-category.sports-product-category').findMany({
                 orderBy: { order: 'desc' },
                 limit: 1
             });

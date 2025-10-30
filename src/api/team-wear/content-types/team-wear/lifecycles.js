@@ -8,7 +8,8 @@ module.exports = {
                 orderBy: { order: 'desc' },
                 limit: 1
             });
-            data.order = maxOrderItem.length ? maxOrderItem[0].order + 1 : 1;
+            const maxOrder = maxOrderItem.length ? Number(maxOrderItem[0].order) : 0;
+            data.order = maxOrder + 1;
             console.log(`새 상품에 order ${data.order} 할당`);
         }
     }
