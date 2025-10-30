@@ -32,6 +32,13 @@ const getPreviewPathname = (uid, { locale, document }) => {
     case "api::sports-sponsor.sports-sponsor":
       return `/mizuno/sports/sponsor/sponsor_detail.html?documentId=${documentId}`;
     
+    case "api::team-wear.team-wear":
+      // categoryName이 있으면 URL에 포함
+      const categoryName = document.categoryName || '';
+      return categoryName 
+        ? `/mizuno/sports/teamwear/teamwear.html?categoryName=${encodeURIComponent(categoryName)}`
+        : `/mizuno/sports/teamwear/teamwear.html`;
+    
     default:
       // 기본적으로 slug가 있으면 해당 경로로, 없으면 컬렉션명으로
       const collectionName = uid.split('.')[1] || 'content';
@@ -86,20 +93,31 @@ module.exports = ({ env }) => ({
           }
 
           // 미즈노 컬렉션인지 확인
-          const isMizunoCollection = uid.includes('golf-') || uid.includes('sports-') || uid.includes('dream-cup');
+          const isMizunoCollection = uid.includes('golf-') || uid.includes('sports-') || uid.includes('dream-cup') || uid.includes('team-wear');
           
           let previewUrl;
           
           if (isMizunoCollection) {
             // 미즈노 컬렉션의 경우 직접 프론트엔드 페이지로 이동
             const mizunoBaseUrl = env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr";
-            const urlSearchParams = new URLSearchParams({
-              documentId: documentId,
-              preview: 'true',
-              status: status || 'draft'
-            });
             
-            previewUrl = mizunoBaseUrl + pathname + (pathname.includes('?') ? '&' : '?') + urlSearchParams.toString();
+            // team-wear의 경우 이미 URL에 파라미터가 포함되어 있으므로 추가 파라미터만 append
+            if (uid === 'api::team-wear.team-wear') {
+              const urlSearchParams = new URLSearchParams({
+                preview: 'true',
+                status: status || 'draft'
+              });
+              
+              previewUrl = mizunoBaseUrl + pathname + (pathname.includes('?') ? '&' : '?') + urlSearchParams.toString();
+            } else {
+              const urlSearchParams = new URLSearchParams({
+                documentId: documentId,
+                preview: 'true',
+                status: status || 'draft'
+              });
+              
+              previewUrl = mizunoBaseUrl + pathname + (pathname.includes('?') ? '&' : '?') + urlSearchParams.toString();
+            }
           } else {
             // 기존 Next.js draft mode 방식
             const baseParams = {
