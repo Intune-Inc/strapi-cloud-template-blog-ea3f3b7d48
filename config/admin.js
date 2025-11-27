@@ -69,7 +69,7 @@ module.exports = ({ env }) => ({
     enabled: true,
     config: {
       // 미즈노 B2C 도메인 설정
-      allowedOrigins: env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr",
+      allowedOrigins: env("CLIENT_URL") || "https://kor.mizuno.com",
       
       async handler(uid, { documentId, locale, status }) {
         try {
@@ -99,7 +99,7 @@ module.exports = ({ env }) => ({
           
           if (isMizunoCollection) {
             // 미즈노 컬렉션의 경우 직접 프론트엔드 페이지로 이동
-            const mizunoBaseUrl = env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr";
+            const mizunoBaseUrl = env("CLIENT_URL") || "https://kor.mizuno.com";
             
             // team-wear의 경우 이미 URL에 파라미터가 포함되어 있으므로 추가 파라미터만 append
             if (uid === 'api::team-wear.team-wear') {
@@ -132,7 +132,7 @@ module.exports = ({ env }) => ({
             }
             
             const urlSearchParams = new URLSearchParams(baseParams);
-            const baseUrl = env("CLIENT_URL") || "https://mizuno-b2c.intune.co.kr";
+            const baseUrl = env("CLIENT_URL") || "https://kor.mizuno.com";
             previewUrl = baseUrl + "/api/preview?" + urlSearchParams.toString();
           }
           
