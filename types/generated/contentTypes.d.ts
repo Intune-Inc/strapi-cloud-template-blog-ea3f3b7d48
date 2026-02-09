@@ -656,6 +656,7 @@ export interface ApiGolfProductGolfProduct extends Struct.CollectionTypeSchema {
           preset: 'defaultHtml';
         }
       >;
+    genderType: Schema.Attribute.Enumeration<['man', 'woman']>;
     images: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios',
       true
@@ -694,6 +695,7 @@ export interface ApiGolfProductGolfProduct extends Struct.CollectionTypeSchema {
           preset: 'defaultHtml';
         }
       >;
+    shopBadge: Schema.Attribute.Text;
     simpleExplanation: Schema.Attribute.RichText &
       Schema.Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',

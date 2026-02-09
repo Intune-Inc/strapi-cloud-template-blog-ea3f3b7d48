@@ -139,6 +139,16 @@
     },
     "badge": {
       "type": "text"
+    },
+    "genderType": {
+      "type": "enumeration",
+      "enum": [
+        "man",
+        "woman"
+      ]
+    },
+    "shopBadge": {
+      "type": "text"
     }
   }
 }
