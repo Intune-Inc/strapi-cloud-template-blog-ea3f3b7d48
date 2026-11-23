@@ -1,5 +1,7 @@
 module.exports = [
   'strapi::logger',
+  // strapi::errors 보다 앞에 두어야 오류 처리 후의 최종 응답 코드가 기록됨
+  'global::request-audit',
   'strapi::errors',
   'strapi::security',
   'strapi::cors',
